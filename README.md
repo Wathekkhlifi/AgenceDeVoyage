@@ -1,6 +1,7 @@
 # AgenceDeVoyage
 
 un site d'agence de voyage en MERN avec deux rôles (agence unique et voyageurs), voici une vue simplifiée des fonctionnalités pour chaque rôle :
+
 Rôle de l'agence unique :
 
     Gestion des voyages :
@@ -14,6 +15,7 @@ Rôle de l'agence unique :
     Gestion des avis :
         Consulter et gérer les avis laissés par les voyageurs sur les voyages.
         Répondre aux avis pour améliorer la relation client.
+
 Rôle des voyageurs :
 
     Recherche de voyages :

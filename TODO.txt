@@ -1,2 +1,6 @@
 1. Authentication:
+    - Login
+    - Register voyageur
+    - Logout
+
 2. Authorization

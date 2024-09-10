@@ -9,7 +9,12 @@ function App() {
     const test = async () => {
       // Making a GET request
       axios
-        .get("http://localhost:8080/users")
+        .post("http://localhost:8080/users/createUser",{
+          firstName:"wathek",
+          lastName:"khlifi",
+          email:"wathek@gmail.com",
+          password:"123456789"
+        })
         .then((response) => {
           // Handle success
           console.log(response.data);
