@@ -1,39 +1,21 @@
-import "./App.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
+// App.js
+import setAuthToken from './utils/setAuthToken';
+import store from './store/store';
+import { Provider } from 'react-redux';
+import Login from './components/Login';
+
+if (localStorage.token) {
+    setAuthToken(localStorage.token);
+}
 
 function App() {
-  const [test, setTest] = useState("");
-
-  useEffect(() => {
-    const test = async () => {
-      // Making a GET request
-      axios
-        .post("http://localhost:8080/users/createUser",{
-          firstName:"wathek",
-          lastName:"khlifi",
-          email:"wathek@gmail.com",
-          password:"123456789"
-        })
-        .then((response) => {
-          // Handle success
-          console.log(response.data);
-          setTest(response.data);
-        })
-        .catch((error) => {
-          // Handle error
-          console.error("Error fetching data:", error);
-        });
-    };
-
-    test();
-  }, []);
-
-  return (
-    <div className="App">
-      <p>{test}</p>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <div className="App">
+                <Login />
+            </div>
+        </Provider>
+    );
 }
 
 export default App;

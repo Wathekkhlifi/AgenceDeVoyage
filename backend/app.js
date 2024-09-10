@@ -3,14 +3,14 @@ var express = require("express");
 var helmet = require("helmet");
 var cors = require("cors");
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-// var usersRouter = require("./routes/users");
+var authRouter = require("./routes/auth.router");
+var usersRouter = require("./routes/users.router");
 
 var app = express();
 dotenv.config();
@@ -24,9 +24,9 @@ app.use(helmet());
 app.use(cors());
 
 app.use("/", indexRouter);
-// localhost:8080/users/getprofil
 app.use("/users", usersRouter);
-// app.use("/auth", usersRouter);
+// localhost:8080/auth/login
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

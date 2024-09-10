@@ -4,6 +4,7 @@ const createUser = async (req, res, next) => {
   const newUser = new UserModel({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    password: req.body.password,
     email: req.body.email,
     phone: req.body.phone,
   });

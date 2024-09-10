@@ -1,6 +1,14 @@
 1. Authentication:
     - Login
-    - Register voyageur
+        - Login voyageur
+        - token dans localStorage
+        - token dans header
+        - user data dans redux
+
     - Logout
+        - empties localStorage & redux
+        - redirect to login
+
+    - Register voyageur
 
 2. Authorization
