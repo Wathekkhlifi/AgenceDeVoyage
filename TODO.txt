@@ -10,5 +10,26 @@
         - redirect to login
 
     - Register voyageur
+        - ui
+        - backend
+        - redux
 
-2. Authorization
+2. Authorization:
+    - Voyageur can see his own app
+    - Agence unique can see his own app as an admin
+
+
+3. CRUD applications:
+
+    -  Gestion des voyages :
+        Ajouter, modifier et supprimer des voyages (ex. destinations, tarifs, dates).
+            - backend:
+                - model voyages:
+                    - imageSrc
+                    - date 
+                    - destination
+                    - tarifs
+                - routes 
+        Afficher la liste des voyages disponibles avec détails (hébergements, activités, etc.).
+
+    -
