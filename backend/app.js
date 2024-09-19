@@ -9,8 +9,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var authRouter = require("./routes/auth.router");
-var usersRouter = require("./routes/users.router");
 
 var app = express();
 dotenv.config();
@@ -23,10 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(helmet());
 app.use(cors());
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-// localhost:8080/auth/login
-app.use("/auth", authRouter);
+app.use("/api", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
