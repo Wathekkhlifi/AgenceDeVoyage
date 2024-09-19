@@ -25,8 +25,8 @@ const NewHotel = () => {
     );
     setRooms(value);
   };
-  
-  console.log(files)
+
+  console.log(files);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -34,15 +34,16 @@ const NewHotel = () => {
       const list = await Promise.all(
         Object.values(files).map(async (file) => {
           const data = new FormData();
-          data.append("file", file);
+          data.append("photos", file);
           data.append("upload_preset", "upload");
           const uploadRes = await axios.post(
-            "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+            "http://localhost:8800/api/image/upload",
             data
           );
 
-          const { url } = uploadRes.data;
-          return url;
+          const url = uploadRes.data;
+          const img = `http://localhost:8800/uploads/${url[0].split(`\\`)[1]}`;
+          return img;
         })
       );
 
@@ -53,8 +54,11 @@ const NewHotel = () => {
       };
 
       await axios.post("/hotels", newhotel);
-    } catch (err) {console.log(err)}
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <div className="new">
       <Sidebar />
@@ -77,12 +81,12 @@ const NewHotel = () => {
           <div className="right">
             <form>
               <div className="formInput">
-                <label htmlFor="file">
+                <label htmlFor="photos">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
                 <input
                   type="file"
-                  id="file"
+                  id="photos"
                   multiple
                   onChange={(e) => setFiles(e.target.files)}
                   style={{ display: "none" }}

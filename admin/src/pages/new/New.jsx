@@ -16,19 +16,21 @@ const New = ({ inputs, title }) => {
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("file", file);
+    data.append("photos", file);
     data.append("upload_preset", "upload");
     try {
       const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+        "http://localhost:8800/api/image/upload",
         data
       );
 
-      const { url } = uploadRes.data;
+      const url = uploadRes.data;
+      console.log({ uploadRes, url: url[0].split(`\\`)[1]});
+      const img = `http://localhost:8800/uploads/${url[0].split(`\\`)[1]}`;
 
       const newUser = {
         ...info,
-        img: url,
+        img,
       };
 
       await axios.post("/auth/register", newUser);
@@ -60,12 +62,12 @@ const New = ({ inputs, title }) => {
           <div className="right">
             <form>
               <div className="formInput">
-                <label htmlFor="file">
+                <label htmlFor="photos">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
                 <input
                   type="file"
-                  id="file"
+                  id="photos"
                   onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }}
                 />
