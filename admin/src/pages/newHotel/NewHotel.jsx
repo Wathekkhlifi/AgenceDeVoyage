@@ -65,7 +65,7 @@ const NewHotel = () => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Product</h1>
+          <h1>Add New Trip</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -111,7 +111,7 @@ const NewHotel = () => {
                   <option value={true}>Yes</option>
                 </select>
               </div>
-              <div className="selectRooms">
+              {/* <div className="selectRooms">
                 <label>Rooms</label>
                 <select id="rooms" multiple onChange={handleSelect}>
                   {loading
@@ -123,7 +123,7 @@ const NewHotel = () => {
                         </option>
                       ))}
                 </select>
-              </div>
+              </div> */}
               <button onClick={handleClick}>Send</button>
             </form>
           </div>
