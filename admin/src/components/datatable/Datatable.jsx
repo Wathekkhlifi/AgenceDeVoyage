@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const Datatable = ({columns}) => {
+const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState();
@@ -23,6 +23,17 @@ const Datatable = ({columns}) => {
     } catch (err) {}
   };
 
+  const handleView = (id) => {
+    console.log(id);
+    if (path === "users") {
+      console.log("user");
+    } else if (path === "hotels") {
+      console.log("hotel");
+    } else if (path === "rooms") {
+      console.log("room");
+    }
+  };
+
   const actionColumn = [
     {
       field: "action",
@@ -31,7 +42,13 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link
+              to="/users/test"
+              onClick={() => {
+                handleView(params.row._id);
+              }}
+              style={{ textDecoration: "none" }}
+            >
               <div className="viewButton">View</div>
             </Link>
             <div
